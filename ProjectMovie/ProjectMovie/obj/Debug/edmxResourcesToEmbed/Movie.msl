@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectMovieFinalModelStoreContainer" CdmEntityContainer="ProjectMovieFinalEntities">
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Bk_id" ColumnName="Bk_id" />
+          <ScalarProperty Name="Bk_Movie_id" ColumnName="Bk_Movie_id" />
+          <ScalarProperty Name="Bk_SubTh_id" ColumnName="Bk_SubTh_id" />
+          <ScalarProperty Name="BK_STDI_id" ColumnName="BK_STDI_id" />
+          <ScalarProperty Name="BK_User" ColumnName="BK_User" />
+          <ScalarProperty Name="BK_Time" ColumnName="BK_Time" />
+          <ScalarProperty Name="BK_Seat" ColumnName="BK_Seat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingSeatInfoes">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.BookingSeatInfo">
+        <MappingFragment StoreEntitySet="BookingSeatInfo">
+          <ScalarProperty Name="Bookseat_id" ColumnName="Bookseat_id" />
+          <ScalarProperty Name="Bk_SeatNo" ColumnName="Bk_SeatNo" />
+          <ScalarProperty Name="Bk_SeatName" ColumnName="Bk_SeatName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovieDetails">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.MovieDetail">
+        <MappingFragment StoreEntitySet="MovieDetails">
+          <ScalarProperty Name="mov_id" ColumnName="mov_id" />
+          <ScalarProperty Name="mov_title" ColumnName="mov_title" />
+          <ScalarProperty Name="mov_genre" ColumnName="mov_genre" />
+          <ScalarProperty Name="mov_duration" ColumnName="mov_duration" />
+          <ScalarProperty Name="mov_rating" ColumnName="mov_rating" />
+          <ScalarProperty Name="mov_releasedate" ColumnName="mov_releasedate" />
+          <ScalarProperty Name="mov_visiotype" ColumnName="mov_visiotype" />
+          <ScalarProperty Name="mov_language" ColumnName="mov_language" />
+          <ScalarProperty Name="mov_maincast" ColumnName="mov_maincast" />
+          <ScalarProperty Name="mov_director" ColumnName="mov_director" />
+          <ScalarProperty Name="mov_subtitle" ColumnName="mov_subtitle" />
+          <ScalarProperty Name="mov_price" ColumnName="mov_price" />
+          <ScalarProperty Name="mov_url" ColumnName="mov_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovieTheatres">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.MovieTheatre">
+        <MappingFragment StoreEntitySet="MovieTheatres">
+          <ScalarProperty Name="MoTh_id" ColumnName="MoTh_id" />
+          <ScalarProperty Name="Mov_id" ColumnName="Mov_id" />
+          <ScalarProperty Name="SubTh_id" ColumnName="SubTh_id" />
+          <ScalarProperty Name="ShowTimingsDetailsInfo_STDI_id" ColumnName="ShowTimingsDetailsInfo_STDI_id" />
+          <ScalarProperty Name="ShowUntill" ColumnName="ShowUntill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeatGenerators">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.SeatGenerator">
+        <MappingFragment StoreEntitySet="SeatGenerator">
+          <ScalarProperty Name="Seat_id" ColumnName="Seat_id" />
+          <ScalarProperty Name="Seat_Name" ColumnName="Seat_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShowTimingsDetailsInfoes">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.ShowTimingsDetailsInfo">
+        <MappingFragment StoreEntitySet="ShowTimingsDetailsInfo">
+          <ScalarProperty Name="STDI_id" ColumnName="STDI_id" />
+          <ScalarProperty Name="ShowTimeSlots_Screens" ColumnName="ShowTimeSlots_Screens" />
+          <ScalarProperty Name="ShowTickets" ColumnName="ShowTickets" />
+          <ScalarProperty Name="ShowBookedTickets" ColumnName="ShowBookedTickets" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubTheatres">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.SubTheatre">
+        <MappingFragment StoreEntitySet="SubTheatres">
+          <ScalarProperty Name="SubTh_id" ColumnName="SubTh_id" />
+          <ScalarProperty Name="SubTh_Name" ColumnName="SubTh_Name" />
+          <ScalarProperty Name="SubTh_location" ColumnName="SubTh_location" />
+          <ScalarProperty Name="TheatreCompanyBelongsTo" ColumnName="TheatreCompanyBelongsTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TheatreCompanies">
+      <EntityTypeMapping TypeName="ProjectMovieFinalModel.TheatreCompany">
+        <MappingFragment StoreEntitySet="TheatreCompany">
+          <ScalarProperty Name="Theater_id" ColumnName="Theater_id" />
+          <ScalarProperty Name="Th_name" ColumnName="Th_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

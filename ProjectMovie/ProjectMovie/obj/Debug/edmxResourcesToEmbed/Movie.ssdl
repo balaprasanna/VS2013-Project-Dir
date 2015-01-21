@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectMovieFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Bk_id" />
+    </Key>
+    <Property Name="Bk_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bk_Movie_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Bk_SubTh_id" Type="int" Nullable="false" />
+    <Property Name="BK_STDI_id" Type="int" Nullable="false" />
+    <Property Name="BK_User" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="BK_Time" Type="datetime" Nullable="false" />
+    <Property Name="BK_Seat" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookingSeatInfo">
+    <Key>
+      <PropertyRef Name="Bookseat_id" />
+    </Key>
+    <Property Name="Bookseat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bk_SeatNo" Type="int" Nullable="false" />
+    <Property Name="Bk_SeatName" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovieDetails">
+    <Key>
+      <PropertyRef Name="mov_id" />
+    </Key>
+    <Property Name="mov_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="mov_title" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="mov_genre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="mov_duration" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="mov_rating" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="mov_releasedate" Type="datetime" Nullable="false" />
+    <Property Name="mov_visiotype" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="mov_language" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="mov_maincast" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="mov_director" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="mov_subtitle" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="mov_price" Type="varchar" MaxLength="50" />
+    <Property Name="mov_url" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MovieTheatres">
+    <Key>
+      <PropertyRef Name="MoTh_id" />
+    </Key>
+    <Property Name="MoTh_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mov_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SubTh_id" Type="int" Nullable="false" />
+    <Property Name="ShowTimingsDetailsInfo_STDI_id" Type="int" Nullable="false" />
+    <Property Name="ShowUntill" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SeatGenerator">
+    <Key>
+      <PropertyRef Name="Seat_id" />
+    </Key>
+    <Property Name="Seat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Seat_Name" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShowTimingsDetailsInfo">
+    <Key>
+      <PropertyRef Name="STDI_id" />
+    </Key>
+    <Property Name="STDI_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShowTimeSlots_Screens" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ShowTickets" Type="int" Nullable="false" />
+    <Property Name="ShowBookedTickets" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubTheatres">
+    <Key>
+      <PropertyRef Name="SubTh_id" />
+    </Key>
+    <Property Name="SubTh_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubTh_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SubTh_location" Type="text" Nullable="false" />
+    <Property Name="TheatreCompanyBelongsTo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TheatreCompany">
+    <Key>
+      <PropertyRef Name="Theater_id" />
+    </Key>
+    <Property Name="Theater_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Th_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="Booking_MovieDetails">
+    <End Role="MovieDetails" Type="Self.MovieDetails" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieDetails">
+        <PropertyRef Name="mov_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Bk_Movie_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Booking_ShowTimingsDetailsInfo">
+    <End Role="ShowTimingsDetailsInfo" Type="Self.ShowTimingsDetailsInfo" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShowTimingsDetailsInfo">
+        <PropertyRef Name="STDI_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="BK_STDI_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Booking_SubTheatres">
+    <End Role="SubTheatres" Type="Self.SubTheatres" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubTheatres">
+        <PropertyRef Name="SubTh_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Bk_SubTh_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_BookingSeatInfo">
+    <End Role="BookingSeatInfo" Type="Self.BookingSeatInfo" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookingSeatInfo">
+        <PropertyRef Name="Bookseat_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="BK_Seat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MovieTheatres_MovieDetails">
+    <End Role="MovieDetails" Type="Self.MovieDetails" Multiplicity="1" />
+    <End Role="MovieTheatres" Type="Self.MovieTheatres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieDetails">
+        <PropertyRef Name="mov_id" />
+      </Principal>
+      <Dependent Role="MovieTheatres">
+        <PropertyRef Name="Mov_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MovieTheatres_ShowTimingsDetailsInfo">
+    <End Role="ShowTimingsDetailsInfo" Type="Self.ShowTimingsDetailsInfo" Multiplicity="1" />
+    <End Role="MovieTheatres" Type="Self.MovieTheatres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShowTimingsDetailsInfo">
+        <PropertyRef Name="STDI_id" />
+      </Principal>
+      <Dependent Role="MovieTheatres">
+        <PropertyRef Name="ShowTimingsDetailsInfo_STDI_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MovieTheatres_SubTheatres">
+    <End Role="SubTheatres" Type="Self.SubTheatres" Multiplicity="1" />
+    <End Role="MovieTheatres" Type="Self.MovieTheatres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubTheatres">
+        <PropertyRef Name="SubTh_id" />
+      </Principal>
+      <Dependent Role="MovieTheatres">
+        <PropertyRef Name="SubTh_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubTheatres_TheatreCompany">
+    <End Role="TheatreCompany" Type="Self.TheatreCompany" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SubTheatres" Type="Self.SubTheatres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheatreCompany">
+        <PropertyRef Name="Theater_id" />
+      </Principal>
+      <Dependent Role="SubTheatres">
+        <PropertyRef Name="TheatreCompanyBelongsTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectMovieFinalModelStoreContainer">
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookingSeatInfo" EntityType="Self.BookingSeatInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieDetails" EntityType="Self.MovieDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieTheatres" EntityType="Self.MovieTheatres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SeatGenerator" EntityType="Self.SeatGenerator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShowTimingsDetailsInfo" EntityType="Self.ShowTimingsDetailsInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubTheatres" EntityType="Self.SubTheatres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TheatreCompany" EntityType="Self.TheatreCompany" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Booking_MovieDetails" Association="Self.Booking_MovieDetails">
+      <End Role="MovieDetails" EntitySet="MovieDetails" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="Booking_ShowTimingsDetailsInfo" Association="Self.Booking_ShowTimingsDetailsInfo">
+      <End Role="ShowTimingsDetailsInfo" EntitySet="ShowTimingsDetailsInfo" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="Booking_SubTheatres" Association="Self.Booking_SubTheatres">
+      <End Role="SubTheatres" EntitySet="SubTheatres" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_BookingSeatInfo" Association="Self.FK_Booking_BookingSeatInfo">
+      <End Role="BookingSeatInfo" EntitySet="BookingSeatInfo" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="MovieTheatres_MovieDetails" Association="Self.MovieTheatres_MovieDetails">
+      <End Role="MovieDetails" EntitySet="MovieDetails" />
+      <End Role="MovieTheatres" EntitySet="MovieTheatres" />
+    </AssociationSet>
+    <AssociationSet Name="MovieTheatres_ShowTimingsDetailsInfo" Association="Self.MovieTheatres_ShowTimingsDetailsInfo">
+      <End Role="ShowTimingsDetailsInfo" EntitySet="ShowTimingsDetailsInfo" />
+      <End Role="MovieTheatres" EntitySet="MovieTheatres" />
+    </AssociationSet>
+    <AssociationSet Name="MovieTheatres_SubTheatres" Association="Self.MovieTheatres_SubTheatres">
+      <End Role="SubTheatres" EntitySet="SubTheatres" />
+      <End Role="MovieTheatres" EntitySet="MovieTheatres" />
+    </AssociationSet>
+    <AssociationSet Name="SubTheatres_TheatreCompany" Association="Self.SubTheatres_TheatreCompany">
+      <End Role="TheatreCompany" EntitySet="TheatreCompany" />
+      <End Role="SubTheatres" EntitySet="SubTheatres" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

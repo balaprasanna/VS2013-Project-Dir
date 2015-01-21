@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b1cd374b7904c03b99404659db148f4" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.Booking" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.BookingSeatInfo" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.MovieDetail" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.MovieTheatre" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.SeatGenerator" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.ShowTimingsDetailsInfo" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.SubTheatre" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectMovieFinalModel.TheatreCompany" Width="1.5" PointX="1.5" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="ProjectMovieFinalModel.Booking_MovieDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectMovieFinalModel.Booking_ShowTimingsDetailsInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectMovieFinalModel.Booking_SubTheatres" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectMovieFinalModel.FK_Booking_BookingSeatInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectMovieFinalModel.MovieTheatres_MovieDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectMovieFinalModel.MovieTheatres_ShowTimingsDetailsInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectMovieFinalModel.MovieTheatres_SubTheatres" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectMovieFinalModel.SubTheatres_TheatreCompany" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
